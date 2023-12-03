@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang= "ja">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>ログイン機能付きタスク管理サービス(詳細画面</title>
-    </head>
-    <body>
-        <h1>タスクの登録</h1>
+@extends('layout')
+{{-- タイトル --}}
+@section('title')(詳細画面)@endsection
+
+{{-- メインコンテンツ --}}
+@section('contets')
+        <h1>タスクの登録(未実装)</h1>
             <form action="./top.html" method="post">
                 タスク名:<input><br>
                 期限:<input type="date"><br>
@@ -17,8 +15,8 @@
                 <button>タスクを登録する</button>     
             </form>
         
-        <h1>タスクの一覧</h1>
-        <a href="./top.html">CSVダウンロード</a><br>
+        <h1>タスクの一覧(未実装)</h1>
+        <a href="./top.html">CSVダウンロード(未実装)</a><br>
         <table border="1">
         <tr>
             <th>タスク名
@@ -55,13 +53,12 @@
         </table>
         <!-- ページネーション -->
         現在 1 ページ目<br>
-        <a href="./top.html">最初のページ</a> /
-        <a href="./top.html">前に戻る</a> /
-        <a href="./top.html">次に進む</a>
+        <a href="./top.html">最初のページ(未実装)</a> /
+        <a href="./top.html">前に戻る(未実装)</a> /
+        <a href="./top.html">次に進む(未実装)</a>
         <br>
         <hr>
         <menu label="リンク">
-        <a href="./index.html">ログアウト</a><br>
+        <a href="./index.html">ログアウト(未実装)</a><br>
         </menu>
-    </body>
-</html>
+@endsection
