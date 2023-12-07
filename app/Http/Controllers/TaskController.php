@@ -26,9 +26,9 @@ class TaskController extends Controller
           // validate済みのデータの取得
           $datum = $request->validated();
           //
-          $user = Auth::user();
-          $id = Auth::id();
-          var_dump($datum, $user, $id); exit;
+          //$user = Auth::user();
+          //$id = Auth::id();
+          //var_dump($datum, $user, $id); exit;
           //　user_idの追加
           $datum['user_id'] = Auth::id();
           // テーブルへのINSERT
@@ -40,5 +40,8 @@ class TaskController extends Controller
              echo $e->getMessage();
              exit;
             }
+            return redirect('/task/list');
+            //タスク登録成功
+            $request->session()->flash('front.task_register_success', true);
       }
 }

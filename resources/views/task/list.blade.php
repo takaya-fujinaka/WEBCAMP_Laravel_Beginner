@@ -4,7 +4,10 @@
 
 {{-- メインコンテンツ --}}
 @section('contets')
-        <h1>タスクの登録(未実装)</h1>
+        <h1>タスクの登録</h1>
+            @if (session('front.task_register_success') == true)
+                タスク登録しました！！<br>
+            @endif
             @if ($errors->any())
                 <div>
                 @foreach ($errors->all() as $error)
