@@ -9,7 +9,7 @@ use App\Models\Task as TaskModel;
 
 class TaskController extends Controller
 {
-    /**
+ /**
      * タスク一覧ページを表示する
      * 
      * ＠return \Illuminate\View\View
@@ -32,11 +32,13 @@ class TaskController extends Controller
           //　user_idの追加
           $datum['user_id'] = Auth::id();
           // テーブルへのINSERT
-          $r = TaskModel::create($datum);
- var_dump($r); exit;
-      }　catch(\Throwable $e) {
-            // xxx 本当はログに書く等の処理をする。
-            echo $e->getMessage();
-            exit
+          try {
+            $r = TaskModel::create($datum);
+            var_dump($r); exit;
+            } catch (\Throwable $e) {
+             //xxx 本当はログに書く等の処理をする。今回はいったん「出力する」だけ
+             echo $e->getMessage();
+             exit;
+            }
       }
 }
