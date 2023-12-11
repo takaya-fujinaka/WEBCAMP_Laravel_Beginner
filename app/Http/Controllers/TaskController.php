@@ -16,12 +16,16 @@ class TaskController extends Controller
      */
      public function list()
      {
+         // 1Page当たりの表示アイテム数を設定
+         $per_page = 15;
          //一覧の取得
          $list = TaskModel::where('user_id', Auth::id())
          ->orderBy('priority', 'DESC')
          ->orderBy('period')
          ->orderBy('created_at')
-         ->get();
+         ->paginate($per_page);
+         //->get();
+ /*
  $sql = TaskModel::where('user_id', Auth::id())
  ->orderBy('priority', 'DESC')
  ->orderBy('period')
@@ -29,6 +33,7 @@ class TaskController extends Controller
  ->toSql();
  //echo "<pre>\n"; var_dump($sql, $list); exit;
  var_dump($sql);
+ */
          //
          return view('task.list', ['list' => $list]);
      }
@@ -57,5 +62,7 @@ class TaskController extends Controller
             return redirect('/task/list');
             //タスク登録成功
             $request->session()->flash('front.task_register_success', true);
+            //
+            return redirect('/task/list');
       }
 }
