@@ -11,6 +11,12 @@
             @if (session('front.task_delete_success') ==true)
                 タスク削除しました！！<br>
             @endif
+            @if (session('front.task_completed_success') == true)
+                タスクを完了にしました
+            @endif
+            @if (session('front.task_completed_failure') == true)
+                タスクの完了に失敗しました....<br>
+            @endif
             @if ($errors->any())
                 <div>
                 @foreach ($errors->all() as $error)
