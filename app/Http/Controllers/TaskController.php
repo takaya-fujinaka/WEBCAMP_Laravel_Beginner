@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\TaskRegisterPostRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Task as TaskModel;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TaskController extends Controller
 {
@@ -146,5 +148,48 @@ class TaskController extends Controller
            // 詳細閲覧画面にリダイレクトする
            return redirect(rouote('detail', ['task_id' => $task->id]));
           }
+          /**
+           * 削除処理
+           */
+           public function delete(Request $request, $task_id)
+           {
+            // task_idのレコードを取得する
+            $task = $this->getTaskModel($task_id);
+            //タスクを削除る
+            if ($task !== null) {
+             $task->delete();
+              $request->session()->flash('front.task_delete_success', true);
+            }
+            //一覧に遷移する
+            return redirect('/task/list');
+           }
+           /**
+            * タスクの完了
+            */
+            public function complete($task_id)
+            /*タスクを完了テーブルに移動させる*/
+            try {
+             // トランザクションの開始
+             DB::beginTransaction();
+             //task_idのレコードを取得する
+             $task = $this->getTaskModel($task_id);
+             if ($task === null) {
+              // task_idが不正なのでトランザクション終了
+              throw new \Exception('');
+             }
+             var_dump($task->toArray()); exit;
+             //tasks側を削除する
+             //completed_tasks側にinsertする
+             
+             //トランザクション終了
+             DB::commit();
+            } catch(\Throwable $e){
+             //トランザクション異常終了
+             DB::rollBack();
+            }
+            
+           
+            
+            //一覧に遷移する
          
 }
