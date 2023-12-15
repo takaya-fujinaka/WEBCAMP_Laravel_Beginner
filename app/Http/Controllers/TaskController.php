@@ -20,20 +20,13 @@ class TaskController extends Controller
      public function list()
      {
          // 1Page当たりの表示アイテム数を設定
-         $per_page = 15;
+         $per_page = 20;
          //一覧の取得
-         $list = TaskModel::where('user_id', Auth::id())
-         ->orderBy('priority', 'DESC')
-         ->orderBy('period')
-         ->orderBy('created_at')
-         ->paginate($per_page);
-         //->get();
+         $list = $this->getListBuilder()
+                      ->paginate($per_page)
  /*
- $sql = TaskModel::where('user_id', Auth::id())
- ->orderBy('priority', 'DESC')
- ->orderBy('period')
- ->orderBy('created_at')
- ->toSql();
+ $sql = $this->getListBuilder()
+             ->toSql();
  //echo "<pre>\n"; var_dump($sql, $list); exit;
  var_dump($sql);
  */
@@ -209,5 +202,16 @@ class TaskController extends Controller
              //一覧に遷移する
              return redirect('/task/list');
             }
+            /**
+             * CSVダウンロード
+             */
+             public function csvDownload()
+             {
+              // 「ダウンロードさせたいCSV」を作成する
+              // CSVを出力する
+              return response('1,2,3')
+                     ->header('Content-Type', 'text/csv')
+                     ->header('Content-Disposition', 'attachment; filename="test.csv"');
+             }
          
 }
