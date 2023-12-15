@@ -17,13 +17,24 @@ class TaskController extends Controller
      * 
      * ＠return \Illuminate\View\View
      */
+     /**
+      * 一覧用のIlluminate\Database\Eloquent\Builder インスタンスの取得
+      */
+      protected function getListBuilder()
+      {
+       return TaskModel::where('user_id', Auth::id())
+                    ->orderBy('priority', 'DESC')
+                    ->orderBy('period')
+                    ->orderBy('created_at');
+      }
+     
      public function list()
      {
          // 1Page当たりの表示アイテム数を設定
          $per_page = 20;
          //一覧の取得
          $list = $this->getListBuilder()
-                      ->paginate($per_page)
+                      ->paginate($per_page);
  /*
  $sql = $this->getListBuilder()
              ->toSql();
@@ -207,11 +218,42 @@ class TaskController extends Controller
              */
              public function csvDownload()
              {
-              // 「ダウンロードさせたいCSV」を作成する
+              // 「ダウンロードさせたいCSV」を作成する*/
+              // データを取得する
+              $list = $this->getListBuilder()->get();
+              
+              // バッファリングを開始
+              ob_start();
+              
+              // 「書き込み先を"出力"にした」ファイルハンドルを作成する
+              $file = new \SplFileObject('php://output', 'w');
+              // ヘッダを書き込む
+              $file->fputcsv(array_values($data_list));
+              // CSVをファイルに書き込む（出力する）
+              foreach($list as $datum) {
+               $file->fputcsv($datum->toArray());
+              }
+              
+              //現在のバッファの中身を取得し、出力バッファを削除する
+              $csv_string = ob_get_clean();
+              
+              // 文字コードを変換する
+              $csv_string_sjis = mb_convert_encoding($csv_string, 'SJIS', 'UTF-8');
+             
               // CSVを出力する
-              return response('1,2,3')
+              return response($csv_string_sjis)
                      ->header('Content-Type', 'text/csv')
                      ->header('Content-Disposition', 'attachment; filename="test.csv"');
+              $data_list = [
+               'id' => 'タスクID',
+               'name' => 'タスク名',
+               'priority' => '重要度',
+               'period' => '期限',
+               'detail' => 'タスク詳細',
+               'created_at' => 'タスク作成日',
+               'updated_at' => 'タスク修正日',
+               ];
+             
              }
          
 }
