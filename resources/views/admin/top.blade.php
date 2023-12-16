@@ -6,6 +6,9 @@
         <title>ログイン機能付きタスク管理サービス　管理画面</title>
     </head>
     <body>
+        @extends('admin.layout')
+        {{-- メインコンテンツ --}}
+        @section('contets')
         <menu label="リンク">
         <a href="./user_list.html">ユーザ一覧</a><br>
         管理画面機能 1<br>

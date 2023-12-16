@@ -38,6 +38,7 @@ Route::middleware(['auth'])->group(function () {
 Route::prefix('/admin')->group(function () {
     Route::get('', [AdminAuthController::class, 'index'])->name('admin.index');
     Route::get('/top', [AdminHomeController::class, 'top'])->name('admin.top');
+    Rooute::post('/login', [AdminAuthController::class, 'login'])->name('admin.login');
 });
    //
    Route::get('/logout', [AuthController::class, 'logout']);
