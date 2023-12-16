@@ -16,7 +16,7 @@ class AuthController extends Controller
      */
      public function index()
      {
-         return view('admin.index');
+         return view('index');
      }
      //ログイン処理
      public function login(LoginPostRequest $request)
