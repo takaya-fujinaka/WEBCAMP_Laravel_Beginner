@@ -5,6 +5,7 @@ use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TaskController;
 use App\Http\Controllers\TestController;
+use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 
 
 /*
@@ -32,6 +33,10 @@ Route::middleware(['auth'])->group(function () {
        Route::post('/complete/{task_id}', [TaskController::class, 'complete'])->whereNumber('task_id')->name('complete');
        Route::get('/csv/download', [TaskController::class, 'csvDownload']);
    });
+// 管理画面
+Route::prefix('/admin')->group(function () {
+    Route::get('', [AdminAuthController::class, 'index'])->name('admin.index');
+});
    //
    Route::get('/logout', [AuthController::class, 'logout']);
 });
