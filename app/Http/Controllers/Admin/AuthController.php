@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginPostRequest;
@@ -16,7 +16,7 @@ class AuthController extends Controller
      */
      public function index()
      {
-         return view('index');
+         return view('admin.index');
      }
      //ログイン処理
      public function login(LoginPostRequest $request)
