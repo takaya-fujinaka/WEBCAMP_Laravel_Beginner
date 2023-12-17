@@ -23,10 +23,10 @@ class AuthController extends Controller
      {
          //データの取得
          $datum = $request->validated();
-         var_dump($datum); exit;
+         //var_dump($datum); exit;
          
          //認証
-         if (Auth::guardt('admin')->attempt($datum) === false) {
+         if (Auth::guard('admin')->attempt($datum) === false) {
             return back()
                    ->withInput() // 入力の保持
                    ->withErrors(['auth' => 'ログインIDかパスワードに誤りがあります。',])//エラーメッセージの出力

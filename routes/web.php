@@ -33,7 +33,7 @@ Route::middleware(['auth'])->group(function () {
        Route::delete('/delete/{task_id}', [TaskController::class, 'delete'])->whereNumber('task_id')->name('delete');
        Route::post('/complete/{task_id}', [TaskController::class, 'complete'])->whereNumber('task_id')->name('complete');
        Route::get('/csv/download', [TaskController::class, 'csvDownload']);
-   });
+   })
 // 管理画面
 Route::prefix('/admin')->group(function () {
     Route::get('', [AdminAuthController::class, 'index'])->name('admin.index');
