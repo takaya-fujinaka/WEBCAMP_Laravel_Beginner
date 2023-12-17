@@ -34,7 +34,7 @@ Route::middleware(['auth'])->group(function () {
        Route::post('/complete/{task_id}', [TaskController::class, 'complete'])->whereNumber('task_id')->name('complete');
        Route::get('/csv/download', [TaskController::class, 'csvDownload']);
    });
-});   
+});
 // 管理画面
 Route::prefix('/admin')->group(function () {
     Route::get('', [AdminAuthController::class, 'index'])->name('admin.index');
@@ -44,15 +44,10 @@ Route::prefix('/admin')->group(function () {
     });
     Route::get('/logout', [AdminAuthController::class, 'logout']);
 });
-   //
-   Route::get('/logout', [AuthController::class, 'logout']);
-});
 // テスト用
 Route::get('/welcome', [WelcomeController::class, 'index']);
 Route::get('/welcome/second',[WelcomeController::class, 'second']);
 // form入力テスト用
 Route::get('/test', [TestController::class, 'index']);
 Route::post('/test/input', [TestController::class, 'input']);
-
- 
    
