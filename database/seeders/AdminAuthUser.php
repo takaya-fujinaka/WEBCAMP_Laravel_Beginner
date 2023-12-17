@@ -1,12 +1,12 @@
 <?php
 
-namespace Database\seeders;
+namespace Database\Seeders;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Database\seeder;
+use Illuminate\Database\Seeder;
 
-class AdminAuthUser extends seeder
+class AdminAuthUser extends Seeder
 {
     /**
      * Run the database seeds.
