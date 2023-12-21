@@ -46,6 +46,8 @@ Route::prefix('/admin')->group(function () {
     });
     Route::get('/logout', [AdminAuthController::class, 'logout']);
 });
+// 完了タスク
+Route::get('/completed_task/list')
 // テスト用
 Route::get('/welcome', [WelcomeController::class, 'index']);
 Route::get('/welcome/second',[WelcomeController::class, 'second']);
