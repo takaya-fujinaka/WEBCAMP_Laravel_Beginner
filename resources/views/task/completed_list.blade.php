@@ -43,6 +43,7 @@
         次に進む
         @endif
         <br>
+        <hr>
         <menu label="リンク">
         <a href="/logout">ログアウト</a><br>
         </menu>
