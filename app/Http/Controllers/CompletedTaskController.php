@@ -11,10 +11,17 @@ class CompletedTaskController extends Controller
     //メソッド
     public function list()
     {
+        // 1ページあたりの表示アイテム数を設定
+        $per_page = 2;
+        
         //完了した一覧の取得
-        $list = CompletedTask::where('user_id', Auth::id())->get();
-        $sql = CompletedTask::where('user_id', Auth::id())->toSql();
-        return view('completed_list', 'completed_list');
+        $completed_list = CompletedTask::where('user_id', Auth::id())
+                                       ->orderBy('priority', 'DESC')
+                                       ->orderBy('period')
+                                       ->orderBy('created_at')
+                                       ->paginate($per_page);
+                                       //->get();
+        return view('task.completed_list', ['completed_list' => $completed_list]);
         
     
     }
