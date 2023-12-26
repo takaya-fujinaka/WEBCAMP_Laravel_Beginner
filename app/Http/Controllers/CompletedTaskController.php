@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\CompletedTask;
+use Illuminate\Support\Facades\Auth;
 
 class CompletedTaskController extends Controller
 {
@@ -13,8 +14,7 @@ class CompletedTaskController extends Controller
         //完了した一覧の取得
         $list = CompletedTask::where('user_id', Auth::id())->get();
         $sql = CompletedTask::where('user_id', Auth::id())->toSql();
-        echo "<pre>\n"; var_dump($sql, $list); exit;
-        return view('completed_list', 'completed_task/list');
+        return view('completed_list', 'completed_list');
         
     
     }
