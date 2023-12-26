@@ -8,7 +8,7 @@ use App\Http\Controllers\TestController;
 use App\Http\Controllers\Admin\AuthController as AdminAuthController;
 use App\Http\Controllers\Admin\HomeController as AdminHomeController;
 use App\Http\Controllers\Admin\UserController as AdminUserController;
-
+use App\Http\Controllers\CompletedTaskController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,7 +47,7 @@ Route::prefix('/admin')->group(function () {
     Route::get('/logout', [AdminAuthController::class, 'logout']);
 });
 // 完了タスク
-Route::get('/completed_task/list')
+Route::get('/completed_task/list', [CompletedTaskController::class, 'list']);
 // テスト用
 Route::get('/welcome', [WelcomeController::class, 'index']);
 Route::get('/welcome/second',[WelcomeController::class, 'second']);
