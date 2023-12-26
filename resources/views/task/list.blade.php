@@ -37,6 +37,7 @@
         
         <h1>タスクの一覧(未実装)</h1>
         <a href="/task/csv/download">CSVダウンロード</a><br>
+        <a href="/completed_task/list">タスク完了一覧</a><br>
         <table border="1">
         <tr>
             <th>タスク名
