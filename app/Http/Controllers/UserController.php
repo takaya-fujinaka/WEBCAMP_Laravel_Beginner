@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginPostRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
-use App\Http\REquests\UserRegisterPost;
 
 class UserController extends Controller
 {
