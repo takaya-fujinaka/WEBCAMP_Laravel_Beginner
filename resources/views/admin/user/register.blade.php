@@ -17,11 +17,11 @@
             @endforeach
             </div>
         @endif
-        <form action="/admin/login" method="post">
+        <form action="/user/register" method="post">
             @csrf
-            ログインID:<input name="login_id" value="{{ old('login_id') }}"><br>
-            パスワード:<input name="password" type="password"><br>
-            <button class="btn btn-primary mb-3">登録</button>
+            名前:<input><br>
+            email:<input><br>
+            パスワード<input><br>
         </form>
     </body>
 </html>
