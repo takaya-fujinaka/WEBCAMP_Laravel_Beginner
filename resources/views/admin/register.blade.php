@@ -6,22 +6,13 @@
         <title>ログイン機能付きタスク管理サービス　会員登録</title>
     </head>
     <body>
-        @extends('admin.layout')
-        {{-- メインコンテンツ --}}
-        @section('contets')
         <h1>ユーザ登録</h1>
-        @if ($errors->any())
-            <div>
-            @foreach ($errors->all() as $error)
-                {{ $error }}<br>
-            @endforeach
-            </div>
-        @endif
         <form action="/user/register" method="post">
             @csrf
             名前:<input><br>
             email:<input><br>
             パスワード<input><br>
+            <button>登録する</button><br>
         </form>
     </body>
 </html>
