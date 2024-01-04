@@ -7,6 +7,13 @@
     </head>
     <body>
         <h1>ユーザ登録</h1>
+        @if ($errors->any())
+            <div>
+            @foreach ($errors->all() as $error)
+                {{ $error }}<br>
+            @endforeach
+            </div>
+        @endif
         <form action="/user/register" method="post">
             @csrf
             名前:<input name="name"><br>

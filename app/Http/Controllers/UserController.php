@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UserRegisterPost;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -20,8 +21,14 @@ class UserController extends Controller
      }
      public function register(UserRegisterPost $request)
      {
-         $datum = $request->validate();
+         //validate済みのデータの取得
+         $datum = $request->validated();
          var_dump($datum); exit;
+         //パスワードのハッシュ化
+         $datum['password'] = Hash::make($datum['password']);
+         //UserテーブルへのINSERT
+         //メッセージ
+         //一覧に遷移する
      }
      
 }
