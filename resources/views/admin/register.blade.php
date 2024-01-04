@@ -9,9 +9,9 @@
         <h1>ユーザ登録</h1>
         <form action="/user/register" method="post">
             @csrf
-            名前:<input><br>
-            email:<input><br>
-            パスワード<input><br>
+            名前:<input name="name"><br>
+            email:<input name="email" type="email"><br>
+            パスワード<input name="pass"><br>
             <button>登録する</button><br>
         </form>
     </body>

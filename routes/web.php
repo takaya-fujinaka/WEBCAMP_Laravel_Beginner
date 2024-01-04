@@ -57,4 +57,5 @@ Route::get('/test', [TestController::class, 'index']);
 Route::post('/test/input', [TestController::class, 'input']);
 //会員登録
 Route::get('/user/register', [UserController::class, 'index']);
+Route::post('/user/register', [UserController::class, 'register']);
    
