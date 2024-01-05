@@ -7,6 +7,7 @@ use App\Http\Requests\UserRegisterPost;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use App\Models\User as UserModel;
 
 class UserController extends Controller
 {
