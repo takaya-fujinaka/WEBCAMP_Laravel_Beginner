@@ -38,7 +38,7 @@ class UserController extends Controller
          //会員登録成功
          $request->session()->flash('front.user_register_success', true);
          //一覧に遷移する
-         return redirect('/user/register');
+         return redirect('/');
      }
      
 }
