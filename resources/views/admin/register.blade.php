@@ -7,6 +7,9 @@
     </head>
     <body>
         <h1>ユーザ登録</h1>
+        @if (session('front.user_register_success') == true)
+            ユーザを登録しました！！<br>
+        @endif   
         @if ($errors->any())
             <div>
             @foreach ($errors->all() as $error)
@@ -18,7 +21,7 @@
             @csrf
             名前:<input name="name"><br>
             email:<input name="email" type="email"><br>
-            パスワード<input name="pass"><br>
+            パスワード<input name="pass" type="password"><br>
             <button>登録する</button><br>
         </form>
     </body>
