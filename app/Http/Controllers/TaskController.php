@@ -96,13 +96,13 @@ class TaskController extends Controller
           // task_idのレコードを取得する
           $task = TaskModel::find($task_id);
           if ($task === null) {
-           return null;
-          return redirect('/task/list');
+              return null;
         }
           // 本人以外のタスクならNGとする
           if ($task->user_id !== Auth::id()) {
-           return null;
+              return null;
         }
+        //
         return $task;
         }
         /**
@@ -130,10 +130,6 @@ class TaskController extends Controller
            if ($task === null) {
             return redirect('/task/list');
            }
-           // 本人以外のタスクならNGとする
-           if ($task->user_id !== Auth::id()) {
-            return redirect('/task/list');
-           }
            // レコードの内容をUPDATEをする
            $task->name = $datum['name'];
            $task->period = $datum['period'];
@@ -150,7 +146,7 @@ class TaskController extends Controller
           $request->session()->flash('front.task_edit_success', true);
            
            // 詳細閲覧画面にリダイレクトする
-           return redirect(rouote('detail', ['task_id' => $task->id]));
+           return redirect(route('detail', ['task_id' => $task->id]));
           }
           /**
            * 削除処理
