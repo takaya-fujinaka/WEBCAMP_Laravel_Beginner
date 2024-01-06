@@ -17,7 +17,7 @@
             <tr>
                 <td>{{ $task->name }}</td>
                 <td>{{ $task->period }}</td>
-                <td>{{ $task->priority }}</td>
+                <td>{{ $task->getPriorityString() }}</td>
                 <td>{{ $task->created_at }}</td>
             </tr>
         @endforeach
