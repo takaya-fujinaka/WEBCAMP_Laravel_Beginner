@@ -20,8 +20,8 @@
                 <td>{{ $task->priority }}</td>
                 <td>{{ $task->created_at }}</td>
             </tr>
-        </table>
         @endforeach
+        </table>
         <!-- ページネーション -->
         {{-- $list->links() --}}
         現在 {{ $completed_list->currentPage() }} ページ目<br>
