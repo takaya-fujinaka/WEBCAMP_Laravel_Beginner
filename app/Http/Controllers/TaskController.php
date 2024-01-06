@@ -34,7 +34,7 @@ class TaskController extends Controller
          $per_page = 20;
          //一覧の取得
          $list = $this->getListBuilder()
-                      ->paginate($per_page);
+                          ->paginate($per_page);
  /*
  $sql = $this->getListBuilder()
              ->toSql();
@@ -66,7 +66,6 @@ class TaskController extends Controller
              echo $e->getMessage();
              exit;
             }
-            return redirect('/task/list');
             //タスク登録成功
             $request->session()->flash('front.task_register_success', true);
             //
