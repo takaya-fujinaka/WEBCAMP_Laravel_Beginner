@@ -60,7 +60,7 @@ class TaskController extends Controller
           // テーブルへのINSERT
           try {
             $r = TaskModel::create($datum);
-            var_dump($r); exit;
+            var_dump($r);
             } catch (\Throwable $e) {
              //xxx 本当はログに書く等の処理をする。今回はいったん「出力する」だけ
              echo $e->getMessage();
